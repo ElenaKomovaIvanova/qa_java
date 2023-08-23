@@ -16,10 +16,19 @@ public class Lion {
         }
     }
 
-    Feline feline = new Feline();
+    //Feline feline = new Feline();
+    private FelineInterface felineInterface;
+    private AnimalInterface animalInterface;
+
+    public Lion(FelineInterface felineInterface) {
+        this.felineInterface = felineInterface;
+    }
+    public Lion(AnimalInterface animalInterface) {
+        this.animalInterface = animalInterface;
+    };
 
     public int getKittens() {
-        return feline.getKittens();
+        return felineInterface.getKittens();
     }
 
     public boolean doesHaveMane() {
@@ -27,6 +36,6 @@ public class Lion {
     }
 
     public List<String> getFood() throws Exception {
-        return feline.getFood("Хищник");
+        return animalInterface.getFood("Хищник");
     }
 }
