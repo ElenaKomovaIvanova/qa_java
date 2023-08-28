@@ -8,6 +8,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(MockitoJUnitRunner.class)
 public class LionTesrMocF {
     @Spy
@@ -20,9 +22,9 @@ public class LionTesrMocF {
 
     }
 
-
     @Test
     public  void testgetKittens() {
-        "1".equals(lion.getKittens());
+        assertEquals(1,(lion.getKittens()));
     }
+
 }

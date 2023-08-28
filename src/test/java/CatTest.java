@@ -13,9 +13,9 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.mockito.internal.util.StringUtil.join;
-
 
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
@@ -26,15 +26,12 @@ public class CatTest {
     @Before
     public void setCat() {
         cat = new Cat(feline);
-
     }
-
-
 
     @Test
     public void testsSound()  {
         String sound = cat.getSound();
-            }
+    }
 
     @Test
     public void getFoodSize() throws Exception {
@@ -43,8 +40,8 @@ public class CatTest {
 
     @Test
     public void getFoodList() throws Exception {
-        String food = join(cat.getFood(),",");
-        food.equals("Животные, Птицы, Рыба");
+        String food = String.join(", ", cat.getFood());
+        assertEquals("Животные, Птицы, Рыба", food);
     }
 
     @Test
@@ -52,5 +49,6 @@ public class CatTest {
         cat.getFood();
         Mockito.verify(feline,Mockito.times(1)).eatMeat();
     }
+
 }
 

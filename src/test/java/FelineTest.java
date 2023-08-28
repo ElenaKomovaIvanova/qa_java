@@ -7,6 +7,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.internal.util.StringUtil.join;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -17,27 +19,24 @@ public class FelineTest {
     @Before
     public void setFeline() {
         feline = new Feline();
-
-     }
+    }
     @Test
     public void tesGetFamily() {
-        feline.getFamily().equals("Кошачьи");
-     }
-
+        assertEquals("Кошачьи",feline.getFamily());
+    }
 
     @Test
     public void testeatMeat() throws Exception {
-        String food = join(feline.eatMeat(),",");
-        food.equals("Животные, Птицы, Рыба");
+        String food = String.join(", ", feline.eatMeat());
+        assertEquals("Животные, Птицы, Рыба", food);
      }
 
      @Test
     public void testGetKittens() {
-        "1".equals(feline.getKittens());
+         assertEquals(1,(feline.getKittens()));
      }
 
-
-    }
+}
 
 
 

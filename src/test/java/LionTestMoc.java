@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.internal.util.StringUtil.join;
 @RunWith(MockitoJUnitRunner.class)
 public class LionTestMoc {
@@ -19,13 +20,12 @@ public class LionTestMoc {
     @Before
     public void setLion() {
         lion = new Lion(animal);
-
     }
 
     @Test
     public void getFoodList() throws Exception {
-        String food = join(lion.getFood(), ",");
-        food.equals("Животные, Птицы, Рыба");
+        String food = String.join(", ", lion.getFood());
+        assertEquals("Животные, Птицы, Рыба", food);
     }
 
     @Test
@@ -33,6 +33,5 @@ public class LionTestMoc {
         lion.getFood();
         Mockito.verify(animal, Mockito.times(1)).getFood("Хищник");
     }
-
 
 }

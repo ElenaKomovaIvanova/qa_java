@@ -22,7 +22,8 @@ public class FelineTestPar {
         this.kittensCount = kittensCount;
         this.kittensCountActual = kittensCountActual;
     }
-    @Parameterized.Parameters
+
+    @Parameterized.Parameters(name = "Количество котят. Тестовые данные: {0} {1}")
         public static Object[][] getKittens() {
         return new Object[][]{
                 {1, 1},
@@ -32,12 +33,13 @@ public class FelineTestPar {
                 {0, 0},
         };
     }
+
     @Spy
     Feline feline;
     @Test
     public void testGetKittens() {
         int expected = feline.getKittens(kittensCount);
         assertEquals(expected,kittensCountActual);
-
     }
+
 }
